@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:learning_app/core/utils/constant/app_router.dart';
 import 'package:learning_app/core/utils/constant/colors.dart';
 
 class DashboardViewBody extends StatelessWidget {
@@ -51,6 +53,9 @@ class DashboardViewBody extends StatelessWidget {
               'Basics of Spanish',
               Icons.play_arrow,
               MColors.secondary,
+              () {
+                GoRouter.of(context).push(AppRouter.kLessonLearningView);
+              },
             ),
             SizedBox(height: 10),
             _buildLessonCard(
@@ -58,6 +63,9 @@ class DashboardViewBody extends StatelessWidget {
               'Grammar Quiz',
               Icons.quiz,
               MColors.buttonSecondary,
+              () {
+                GoRouter.of(context).push(AppRouter.kQuizView);
+              },
             ),
             SizedBox(height: 20),
             // Motivational Quote
@@ -132,6 +140,7 @@ class DashboardViewBody extends StatelessWidget {
     String subtitle,
     IconData icon,
     Color color,
+    GestureTapCallback? onTap,
   ) {
     return Container(
       padding: EdgeInsets.all(16),
@@ -146,30 +155,40 @@ class DashboardViewBody extends StatelessWidget {
           ),
         ],
       ),
-      child: Row(
-        children: [
-          CircleAvatar(
-            backgroundColor: color.withOpacity(0.1),
-            child: Icon(icon, color: color),
-          ),
-          SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: MColors.textPrimary,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(subtitle, style: TextStyle(color: MColors.textSecondary)),
-              ],
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          children: [
+            CircleAvatar(
+              backgroundColor: color.withOpacity(0.1),
+              child: Icon(icon, color: color),
             ),
-          ),
-          Icon(Icons.arrow_forward_ios, color: MColors.textSecondary, size: 16),
-        ],
+            SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      color: MColors.textPrimary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(color: MColors.textSecondary),
+                  ),
+                ],
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: MColors.textSecondary,
+              size: 16,
+            ),
+          ],
+        ),
       ),
     );
   }

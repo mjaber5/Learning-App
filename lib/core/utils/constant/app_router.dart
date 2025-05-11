@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:learning_app/features/auth/presentation/view/auth_view.dart';
 import 'package:learning_app/features/dashboard/presentation/view/dashboard_view.dart';
+import 'package:learning_app/features/dashboard/presentation/view/quiz_view.dart';
 import 'package:learning_app/features/layout/presentation/view/layout_view.dart';
 import 'package:learning_app/features/lessons/presentation/view/audio_pronunciation_view.dart';
 import 'package:learning_app/features/lessons/presentation/view/lesson_learning_view.dart';
@@ -19,6 +20,8 @@ abstract class AppRouter {
   static const String kLessonLearningView = '/lessonLearningView';
   static const String kVideoLessonsView = '/videoLessonsView';
   static const String kAudioLessonsView = '/audioLessonsView';
+  static const String kQuizView = '/quizView';
+  static const String kVideoPlayerScreen = '/videoPlayerScreen';
 
   static final routes = GoRouter(
     routes: [
@@ -46,6 +49,11 @@ abstract class AppRouter {
         path: kAudioLessonsView,
         builder: (context, state) => AudioLessonsView(),
       ),
+      GoRoute(path: kQuizView, builder: (context, state) => QuizView()),
+      // GoRoute(
+      //   path: kVideoPlayerScreen,
+      //   builder: (context, state) => VideoPlayerScreen(),
+      // ),
     ],
   );
 }

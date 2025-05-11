@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_app/core/utils/constant/colors.dart';
+import 'package:learning_app/features/lessons/presentation/view/widgets/video_player_view.dart';
 
 class VideoLessonsView extends StatelessWidget {
   const VideoLessonsView({super.key});
@@ -34,7 +35,17 @@ class VideoLessonsView extends StatelessWidget {
                   subtitle:
                       "Learn with video ${index + 1}", // Replace with your image
                   onTap: () {
-                    // TODO: Navigate to video player screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => const VideoPlayerScreen(
+                              videoPath:
+                                  'assets/videos/5211961-uhd_3840_2160_25fps.mp4',
+                              title: 'Video Lesson 1',
+                            ),
+                      ),
+                    );
                   },
                 );
               },
