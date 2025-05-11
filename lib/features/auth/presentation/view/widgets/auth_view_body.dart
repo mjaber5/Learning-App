@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:learning_app/core/utils/constant/app_router.dart';
 import 'package:learning_app/core/utils/constant/colors.dart';
 
 class AuthViewBody extends StatefulWidget {
@@ -96,7 +98,11 @@ class _AuthViewBodyState extends State<AuthViewBody> {
                   ),
                   const SizedBox(height: 12),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(
+                        context,
+                      ).pushReplacement(AppRouter.kLayoutView);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: MColors.buttonPrimary,
                       foregroundColor: MColors.textWhite,
